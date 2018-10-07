@@ -9,13 +9,13 @@ const ReportSchema = new Schema({
   },
 
   //What time the ducks are fed
-  dateoffed: {
+  fedDate: {
     type: Date,
     required: true
   },
 
   //What food the ducks are fed
-  foodtype: {
+  foodType: {
     type: String,
     required: true
   },
@@ -27,19 +27,19 @@ const ReportSchema = new Schema({
   },
 
   //How many ducks are fed
-  howmanyducks: {
+  howManyDucks: {
     type: Number,
     required: true
   },
 
   //What kind of food the ducks are fed
-  kindfood: {
+  foodKind: {
     type: String,
     required: true
   },
 
   //How much food the ducks are fed
-  howmuchfood: {
+  howMuchFood: {
     type: Number,
     required: true
   },
@@ -50,7 +50,7 @@ const ReportSchema = new Schema({
   avatar: {
     type: String
   },
-  dateofreport: {
+  dateOfReport: {
     type: Date,
     default: Date.now
   }
