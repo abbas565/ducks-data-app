@@ -20,6 +20,9 @@ import CreateProfile from "./components/create-profile/CreateProfile";
 import EditProfile from "./components/edit-profile/EditProfile";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
+import ReportsGen from "./components/reports/ReportsGen";
+import ReportsView from "./components/reports/ReportsView";
+import ReportView from "./components/report/ReportView";
 import NotFound from "./components/not-found/NotFound";
 
 import "./App.css";
@@ -74,6 +77,20 @@ class App extends Component {
                   component={EditProfile}
                 />
               </Switch>
+              <Switch>
+                <PrivateRoute exact path="/feed" component={ReportsGen} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/reports" component={ReportsView} />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/reports/:id"
+                  component={ReportView}
+                />
+              </Switch>
+
               <Route exact path="/not-found" component={NotFound} />
             </div>
             <Footer />
