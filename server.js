@@ -34,7 +34,7 @@ app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/reports", reports);
 
-app.get("/", (req, res) => res.send("Hello hello"));
+// app.get("/", (req, res) => res.send("Hello hello"));
 
 // Server static assets if in production
 if (process.env.NODE_ENV === "production") {
