@@ -12,15 +12,12 @@ Redux,
 Express,
 MongoDB(mLab)
 
-1. Installation
-   Requirements
-   Node.js >= 10
-   git clone git@github.com:abbas565/ducks-data-app.git
-   cd ducks-data-app
-   npm install
-   npm run client-install
-2. Run Application
-   npm run dev
+1. Installation Requirement is Node.js >= 10
+2. git clone git@github.com:abbas565/ducks-data-app.git
+3. cd ducks-data-app
+4. npm install
+5. npm run client-install
+6. Run Application with npm run dev
 
 Open http://localhost:3000 to see the app.
 Dashboard - http://localhost:3000
