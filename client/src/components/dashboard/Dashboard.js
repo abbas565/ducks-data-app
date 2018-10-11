@@ -31,7 +31,7 @@ class Dashboard extends Component {
           <div>
             <p className="lead text-muted">
               Welcome{" "}
-              <Link to={`/profile/${profile.firstname}`}>{user.name}</Link>
+              <Link to={`/profile/${profile.lastname}`}>{user.name}</Link>
             </p>
             <ProfileActions />
             <div style={{ marginBottom: "60px" }} />
