@@ -23,7 +23,7 @@ Node.js >= 10
 3. npm install
 4. npm run client-install
 5. Run Application with npm run dev
-6. Create a database in mLab and use its link for creating this file and put it in the config folder:
+6. Create a database in mLab and use its link for creating keys_dev.js file and put it in the config folder:
 
 module.exports = {
 mongoURI: " Your Link",
