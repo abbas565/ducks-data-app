@@ -53,6 +53,9 @@ const ReportSchema = new Schema({
   dateOfReport: {
     type: Date,
     default: Date.now
+  },
+  reportImage: {
+    type: String
   }
 });
 

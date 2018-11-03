@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteReport } from "../../actions/reportActions";
 import Moment from "react-moment";
+import isEmpty from "./../../validation/is-empty";
 
 class ReportFeed extends Component {
   onDeleteClick(id) {
@@ -22,6 +23,17 @@ class ReportFeed extends Component {
         <td>{rep.howManyDucks}</td>
         <td>{rep.foodType}</td>
         <td>{rep.name}</td>
+        <td>
+          {!isEmpty(rep.reportImage) ? (
+            <img
+              className="reportImgSmall"
+              src={"../" + rep.reportImage}
+              alt="Report Image"
+            />
+          ) : (
+            <p>No Image</p>
+          )}
+        </td>
 
         <td>
           <button
@@ -50,6 +62,7 @@ class ReportFeed extends Component {
               <th>Number of Ducks</th>
               <th>Food Type</th>
               <th>Feeder Name</th>
+              <th>Image</th>
               <th />
             </tr>
             {reportSum}

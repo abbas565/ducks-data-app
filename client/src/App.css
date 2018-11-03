@@ -2,6 +2,16 @@ img {
   width: 100%;
 }
 
+.reportImgBig {
+  width: 200px;
+  height: 200px;
+}
+
+.reportImgSmall {
+  width: 50px;
+  height: 50px;
+}
+
 .landing {
   position: relative;
   background: url("./img/ducks.jpg") no-repeat;

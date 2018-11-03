@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import TextFieldGroup from "../common/TextFieldGroup";
-// import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
-// import InputGroup from "../common/InputGroup";
 import SelectListGroup from "../common/SelectListGroup";
 import { addReport } from "../../actions/reportActions";
 
@@ -17,6 +15,7 @@ class ReportForm extends Component {
       howManyDucks: "",
       foodKind: "",
       howMuchFood: "",
+      reportImage: null,
       errors: {}
     };
 
@@ -35,31 +34,72 @@ class ReportForm extends Component {
 
     const { user } = this.props.auth;
 
-    const newReport = {
-      text: this.state.text,
-      fedDate: this.state.fedDate,
-      foodType: this.state.foodType,
-      where: this.state.where,
-      howManyDucks: this.state.howManyDucks,
-      foodKind: this.state.foodKind,
-      howMuchFood: this.state.howMuchFood,
-      name: user.name,
-      avatar: user.avatar
-    };
+    // const newReport = {
+    //   text: this.state.text,
+    //   fedDate: this.state.fedDate,
+    //   foodType: this.state.foodType,
+    //   where: this.state.where,
+    //   howManyDucks: this.state.howManyDucks,
+    //   foodKind: this.state.foodKind,
+    //   howMuchFood: this.state.howMuchFood,
+    //   name: user.name,
+    //   avatar: user.avatar
+    // };
 
-    this.props.addReport(newReport);
+    // const newImage = {
+    //   reportImage: this.state.reportImage
+    // };
+
+    var reportFormData = new FormData();
+    reportFormData.set("text", this.state.text);
+    reportFormData.set("fedDate", this.state.fedDate);
+    reportFormData.set("foodType", this.state.foodType);
+    reportFormData.set("where", this.state.where);
+    reportFormData.set("howManyDucks", this.state.howManyDucks);
+    reportFormData.set("foodKind", this.state.foodKind);
+    reportFormData.set("howMuchFood", this.state.howMuchFood);
+    reportFormData.set("name", user.name);
+    reportFormData.set("avatar", user.avatar);
+
+    if (this.state.reportImage) {
+      reportFormData.append(
+        "reportImage",
+        this.state.reportImage,
+        this.state.reportImage.name
+      );
+    }
+
+    console.log(
+      "report data that posted(form):",
+      reportFormData.get("fedDate")
+    );
+    console.log(
+      "report image that posted(form):",
+      reportFormData.get("reportImage")
+    );
+
+    console.log("Uploaded image state is:", this.state.reportImage);
+
+    this.props.addReport(reportFormData);
+
     this.setState({
       fedDate: "",
       foodType: "",
       where: "",
       howManyDucks: "",
       foodKind: "",
-      howMuchFood: ""
+      howMuchFood: "",
+      reportImage: null
     });
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+  }
+
+  fileSelectedHandler(e) {
+    this.setState({ reportImage: e.target.files[0] });
+    console.log("Uploaded file is:", e.target.files[0]);
   }
 
   render() {
@@ -117,7 +157,7 @@ class ReportForm extends Component {
                   onChange={this.onChange}
                   options={foodTypes}
                   error={errors.foodType}
-                  //info="Give us an idea of where you are at in your career"
+                  //info="Food type"
                 />
                 <TextFieldGroup
                   placeholder="* Where the ducks are fed"
@@ -125,7 +165,8 @@ class ReportForm extends Component {
                   value={this.state.where}
                   onChange={this.onChange}
                   error={errors.where}
-                  // info="Could be your own company or one you work for"
+                  disabled={false}
+                  // info="Where fed the ducks"
                 />
                 <TextFieldGroup
                   placeholder="* How many ducks are fed"
@@ -154,7 +195,15 @@ class ReportForm extends Component {
                   error={errors.howMuchFood}
                   info="Grams"
                 />
+                <TextFieldGroup
+                  placeholder=" Pick image"
+                  type="file"
+                  onChange={this.fileSelectedHandler.bind(this)}
+                  error={errors.reportImage}
+                  info="Image format jpeg, jpg, png or gif and size less than 500 KB"
+                />
               </div>
+
               <button type="submit" className="btn btn-dark">
                 Submit
               </button>

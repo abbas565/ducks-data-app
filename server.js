@@ -34,6 +34,9 @@ app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/reports", reports);
 
+// ---Access uploads folder
+app.use("/uploads", express.static("uploads"));
+
 // app.get("/", (req, res) => res.send("Hello hello"));
 
 // Server static assets if in production
